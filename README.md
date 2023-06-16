@@ -7,8 +7,13 @@ This is the main repository for the certisfied server project.
 - Added nodemon for live reloads when changes are saved
 - Added ts-node to complie TS files while developing instead of recompiling everything every time
 - Added node types to get all of the node library types
-- Added express types to get all of the express library types
 - Added express.js for an easier API development
+- Added express types to get all of the express library types
+- Added mongoose.js for an easier DB connection and schemas
+- Added bcrypt for password encryption and verification
+- Added bcrypt types to get all of the bcrypt library types
+- Added jsonwebtoken for token creation and verification 
+- Added jsonwebtoken types to get all of the jsonwebtoken library types
 
 ## Available scripts
 - npm start - starts the development server (with ts-node and nodemon)

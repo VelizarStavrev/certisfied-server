@@ -1,11 +1,19 @@
+// Libraries
 import express from 'express';
+
+// Routes
 const user = require('./routes/user');
 const template = require('./routes/template');
 const certificate = require('./routes/certificate');
 
+// Configs
+const config = require('./config/config');
+
+// DB connection
+require('./config/mongoose');
+
 const app = express();
-const hostname = '127.0.0.1';
-const port = 3000;
+app.use(express.json());
 
 app.get('/', (req, res) => {
   res.send('The server is working!');
@@ -32,6 +40,6 @@ app.get('/verify/:id', (req, res) => {
   res.send(`Add this route as a function. Param is ${req.params.id}`);
 });
 
-app.listen(port, () => {
-  console.log(`The application is running on port ${port}. View at http://${hostname}:${port}/`)
+app.listen(config.port, () => {
+  console.log(`The application is running on port ${config.port}. View at http://${config.hostname}:${config.port}/`)
 });
