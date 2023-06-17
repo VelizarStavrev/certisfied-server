@@ -3,6 +3,8 @@ import bcrypt from 'bcrypt';
 import { RegisterData } from '../types/user-types';
 const User = require('../models/User');
 
+const { key } = require('../config/jwt');
+
 export async function registerUser(newUserData: RegisterData): Promise<{ status: boolean, message: string, type?: string }> {
     const queryEmail = await User.findOne({ email: newUserData.email });
     const queryUsername = await User.findOne({ username: newUserData.username });
@@ -45,8 +47,8 @@ export async function loginUser(username: string, password: string): Promise<{ s
         uid: user._id,
         role: user.role,
     };
-    const tokenKey = 'CERTISFIED';
-    const token = jwt.sign(tokenPayload, tokenKey);
+
+    const token = jwt.sign(tokenPayload, key);
 
     return { status: true, message: 'User logged in successfully!', token: token };
 }
