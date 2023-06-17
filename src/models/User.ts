@@ -6,6 +6,6 @@ const userSchema = new mongoose.Schema({
     password: String,
     created: Number,
     role: Number
-});
+}, { optimisticConcurrency: true });
 
 module.exports = mongoose.model('User', userSchema);
