@@ -20,4 +20,15 @@ This is the main repository for the certisfied server project.
 - npm build - builds all of the TS files into one JS file in the folder dist
 
 ## Available routes
-- TO DO
+| Route | Purpose |
+| :------------ | :------------ |
+| / | Check if the server is online in a simple way |
+| /user/register | Register the user |
+| /user/login | Login the user |
+| /template/new | Create a new template |
+| /template/edit/id | Edit a template |
+| /template/delete/id | Delete a template |
+| /template/id | Get a template |
+
+## TO DO
+- Create API documentation - Route name, method, expected data

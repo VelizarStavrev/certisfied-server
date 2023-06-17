@@ -5,6 +5,9 @@ const user = require('./routes/user');
 const template = require('./routes/template');
 const certificate = require('./routes/certificate');
 
+// Middlewares
+import { tokenAuth } from './middleware/auth';
+
 const router = express.Router();
 
 router.get('/', (req, res) => {
@@ -20,7 +23,7 @@ router.get('/templates', (req, res) => {
     res.send('Add this route as a function.');
 });
 
-router.use('/template', template);
+router.use('/template', tokenAuth, template);
 
 // Certificate related
 router.get('/certificates', (req, res) => {
