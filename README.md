@@ -25,11 +25,13 @@ This is the main repository for the certisfied server project.
 | / | Check if the server is online in a simple way |
 | /user/register | Register the user |
 | /user/login | Login the user |
+| /templates | Get all of your templates |
 | /template/new | Create a new template |
 | /template/edit/id | Edit a template |
 | /template/delete/id | Delete a template |
 | /template/id | Get a template |
 | /certificate/new | Create a new certificate |
+| /certificates | Get all of your certificates |
 | /certificate/edit/id | Edit a certificate |
 | /certificate/delete/id | Delete a certificate |
 | /certificate/id | Get a certificate |

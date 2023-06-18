@@ -49,3 +49,13 @@ export async function getTemplate(templateId: string, creator: string): Promise<
 
     return { status: false, message: 'An error occurred!' };
 }
+
+export async function getTemplates(creator: string): Promise<{ status: boolean, message: string, data?: TemplateSchemaData }> {
+    const getTemplates = await Template.find({ creator });
+
+    if (getTemplates) {
+        return { status: true, message: 'Template data retrieved succesfully.', data: getTemplates };
+    }
+
+    return { status: false, message: 'An error occurred!' };
+}

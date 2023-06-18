@@ -11,6 +11,7 @@ import { tokenAuth } from './middleware/auth';
 
 // Services
 import { getCertificate, getCertificates } from './services/certificate';
+import { getTemplates } from './services/template';
 
 const router = express.Router();
 
@@ -22,9 +23,17 @@ router.get('/', (req, res) => {
 router.use('/user', user);
 
 // Template related
-router.get('/templates', (req, res) => {
-    console.log('Add this route as a function.');
-    res.send('Add this route as a function.');
+router.get('/templates', tokenAuth, (req, res) => {
+    const creator = req.body.userId;
+
+    getTemplates(creator)
+        .then((response) => {
+            res.send(response);
+        })
+        .catch(error => {
+            console.log('An error occurred during the retrieval of templates!', error);
+            res.send({ status: false, message: 'An error occurred!' });
+        });
 });
 
 router.use('/template', tokenAuth, template);
