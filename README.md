@@ -33,6 +33,7 @@ This is the main repository for the certisfied server project.
 | /certificate/edit/id | Edit a certificate |
 | /certificate/delete/id | Delete a certificate |
 | /certificate/id | Get a certificate |
+| /verify/id | Verify a certificate |
 
 ## TO DO
 - Create API documentation - Route name, method, expected data

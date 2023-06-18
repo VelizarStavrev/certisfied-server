@@ -1,3 +1,4 @@
+// Libraries
 import express from 'express';
 
 // Routes
@@ -7,6 +8,9 @@ const certificate = require('./routes/certificate');
 
 // Middlewares
 import { tokenAuth } from './middleware/auth';
+
+// Services
+import { getCertificate } from './services/certificate';
 
 const router = express.Router();
 
@@ -34,8 +38,15 @@ router.get('/certificates', (req, res) => {
 router.use('/certificate', certificate);
 
 router.get('/verify/:id', (req, res) => {
-    console.log(`Add this route as a function. Param is ${req.params.id}`);
-    res.send(`Add this route as a function. Param is ${req.params.id}`);
+    const certificateId = req.params.id;
+
+    getCertificate(certificateId)
+        .then(() => {
+            res.send({ status: true, message: 'The certificate exists.' });
+        })
+        .catch(() => {
+            res.send({ status: false, message: 'The certificate was not found.' });
+        });
 });
 
 module.exports = router;
