@@ -35,7 +35,7 @@ router.get('/certificates', (req, res) => {
     res.send('Add this route as a function.');
 });
 
-router.use('/certificate', certificate);
+router.use('/certificate', tokenAuth, certificate);
 
 router.get('/verify/:id', (req, res) => {
     const certificateId = req.params.id;
