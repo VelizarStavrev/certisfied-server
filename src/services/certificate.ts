@@ -53,21 +53,3 @@ export async function getCertificate(certificateId: string): Promise<{ status: b
 
     return { status: false, message: 'An error occurred!' };
 }
-
-export async function getCertificates(creator: string): Promise<{ status: boolean, message: string, data?: CertificateSchemaData, template_names?: { [id: string]: string } }> {
-    const getCertificates = await Certificate.find({ creator });
-    const getTemplates = await Template.find({ creator });
-    const templateNames: { [id: string]: string } = {};
-
-    if (getTemplates) {
-        getTemplates.forEach((template: { _id: string, name: string }) => {
-            templateNames[template._id] = template.name;
-        });
-    }
-
-    if (getCertificates) {
-        return { status: true, message: 'Certificate data retrieved succesfully.', data: getCertificates, template_names: templateNames };
-    }
-
-    return { status: false, message: 'An error occurred!' };
-}
