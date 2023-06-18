@@ -29,6 +29,10 @@ This is the main repository for the certisfied server project.
 | /template/edit/id | Edit a template |
 | /template/delete/id | Delete a template |
 | /template/id | Get a template |
+| /certificate/new | Create a new certificate |
+| /certificate/edit/id | Edit a certificate |
+| /certificate/delete/id | Delete a certificate |
+| /certificate/id | Get a certificate |
 
 ## TO DO
 - Create API documentation - Route name, method, expected data
