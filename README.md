@@ -39,3 +39,4 @@ This is the main repository for the certisfied server project.
 
 ## TO DO
 - Create API documentation - Route name, method, expected data
+- Add a testing library and write tests
