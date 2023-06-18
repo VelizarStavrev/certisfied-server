@@ -1,24 +1,102 @@
+// Libraries
 import express from 'express';
+
+// Types
+import { CertificateRequest } from '../types/certificate-types';
+
+// Services
+import { createCertificate, deleteCertificate, editCertificate, getCertificate } from '../services/certificate';
+
 const router = express.Router();
 
-router.post('/new', (req, res) => {
-    console.log('Add this route as a function.');
-    res.send('Add this route as a function.');
+router.post('/new', (req: CertificateRequest, res) => {
+    const currentTimestamp = new Date().getTime();
+
+    const creator = req.body.userId;
+    const template_id = req.body.template_id;
+    const name = req.body.name;
+    const notes = req.body.notes;
+    const fields = req.body.fields;
+    const created = currentTimestamp;
+    const edited = currentTimestamp;
+
+    const data = {
+        creator,
+        template_id,
+        name,
+        notes,
+        fields,
+        created,
+        edited,
+    };
+
+    createCertificate(data)
+        .then((response) => {
+            res.send(response);
+        })
+        .catch(error => {
+            console.log('An error occurred during certificate creation!', error);
+            res.send({ status: false, message: 'An error occurred!' });
+        });
 });
 
-router.post('/edit/:id', (req, res) => {
-    console.log(`Add this route as a function. Param is ${req.params.id}`);
-    res.send(`Add this route as a function. Param is ${req.params.id}`);
+router.post('/edit/:id', (req: CertificateRequest, res) => {
+    const currentTimestamp = new Date().getTime();
+
+    const certificateId = req.params.id;
+    const creator = req.body.userId;
+    const template_id = req.body.template_id;
+    const name = req.body.name;
+    const notes = req.body.notes;
+    const fields = req.body.fields;
+    const created = currentTimestamp;
+    const edited = currentTimestamp;
+
+    const data = {
+        creator,
+        template_id,
+        name,
+        notes,
+        fields,
+        created,
+        edited,
+    };
+
+    editCertificate(certificateId, creator, data)
+        .then((response) => {
+            res.send(response);
+        })
+        .catch(error => {
+            console.log('An error occurred during certificate edit!', error);
+            res.send({ status: false, message: 'An error occurred!' });
+        });
 });
 
 router.post('/delete/:id', (req, res) => {
-    console.log(`Add this route as a function. Param is ${req.params.id}`);
-    res.send(`Add this route as a function. Param is ${req.params.id}`);
+    const certificateId = req.params.id;
+    const creator = req.body.userId;
+
+    deleteCertificate(certificateId, creator)
+        .then((response) => {
+            res.send(response);
+        })
+        .catch(error => {
+            console.log('An error occurred during certificate deletion!', error);
+            res.send({ status: false, message: 'An error occurred!' });
+        });
 });
 
 router.get('/:id', (req, res) => {
-    console.log(`Add this route as a function. Param is ${req.params.id}`);
-    res.send(`Add this route as a function. Param is ${req.params.id}`);
+    const certificateId = req.params.id;
+
+    getCertificate(certificateId)
+        .then((response) => {
+            res.send(response);
+        })
+        .catch(error => {
+            console.log('An error occurred during certificate retrieval!', error);
+            res.send({ status: false, message: 'An error occurred!' });
+        });
 });
 
 module.exports = router;
