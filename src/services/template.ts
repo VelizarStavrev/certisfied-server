@@ -33,7 +33,7 @@ export async function editTemplate(templateId: string, creator: string, newTempl
 export async function deleteTemplate(templateId: string, creator: string): Promise<{ status: boolean, message: string }> {
     const deleteTemplate = await Template.deleteOne({ _id: templateId, creator });
 
-    if (deleteTemplate) {
+    if (deleteTemplate.deletedCount) {
         return { status: true, message: 'Template was deleted successfully!' };
     }
 
