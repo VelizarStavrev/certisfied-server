@@ -10,7 +10,7 @@ const certificate = require('./routes/certificate');
 import { tokenAuth } from './middleware/auth';
 
 // Services
-import { getCertificate } from './services/certificate';
+import { getCertificate, getCertificates } from './services/certificate';
 
 const router = express.Router();
 
@@ -30,9 +30,17 @@ router.get('/templates', (req, res) => {
 router.use('/template', tokenAuth, template);
 
 // Certificate related
-router.get('/certificates', (req, res) => {
-    console.log('Add this route as a function.');
-    res.send('Add this route as a function.');
+router.get('/certificates', tokenAuth, (req, res) => {
+    const creator = req.body.userId;
+
+    getCertificates(creator)
+        .then((response) => {
+            res.send(response);
+        })
+        .catch(error => {
+            console.log('An error occurred during the retrieval of certificates!', error);
+            res.send({ status: false, message: 'An error occurred!' });
+        });
 });
 
 router.use('/certificate', tokenAuth, certificate);
