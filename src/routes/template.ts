@@ -3,6 +3,8 @@ import express from 'express';
 
 // Types
 import { TemplateRequest } from '../types/template-types';
+
+// Services
 import { createTemplate, deleteTemplate, editTemplate, getTemplate } from '../services/template';
 
 const router = express.Router();
