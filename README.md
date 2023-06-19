@@ -1,5 +1,4 @@
 # certisfied-server
-
 This is the main repository for the certisfied server project.
 
 ## Functionality
@@ -30,8 +29,8 @@ This is the main repository for the certisfied server project.
 | /template/edit/id | Edit a template |
 | /template/delete/id | Delete a template |
 | /template/id | Get a template |
-| /certificate/new | Create a new certificate |
 | /certificates | Get all of your certificates |
+| /certificate/new | Create a new certificate |
 | /certificate/edit/id | Edit a certificate |
 | /certificate/delete/id | Delete a certificate |
 | /certificate/id | Get a certificate |
@@ -40,3 +39,4 @@ This is the main repository for the certisfied server project.
 ## TO DO
 - Create API documentation - Route name, method, expected data
 - Add a testing library and write tests
+- Add DB saved logging

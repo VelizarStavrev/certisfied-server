@@ -86,17 +86,4 @@ router.post('/delete/:id', (req, res) => {
         });
 });
 
-router.get('/:id', (req, res) => {
-    const certificateId = req.params.id;
-
-    getCertificate(certificateId)
-        .then((response) => {
-            res.send(response);
-        })
-        .catch(error => {
-            console.log('An error occurred during certificate retrieval!', error);
-            res.send({ status: false, message: 'An error occurred!' });
-        });
-});
-
 module.exports = router;
