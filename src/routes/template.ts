@@ -5,7 +5,7 @@ import express from 'express';
 import { TemplateRequest } from '../types/template-types';
 
 // Services
-import { createTemplate, deleteTemplate, editTemplate, getTemplate } from '../services/template';
+import { createTemplate, deleteTemplate, editTemplate, getTemplate } from '../services/template.service';
 
 const router = express.Router();
 

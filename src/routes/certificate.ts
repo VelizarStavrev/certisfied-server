@@ -5,7 +5,7 @@ import express from 'express';
 import { CertificateRequest } from '../types/certificate-types';
 
 // Services
-import { createCertificate, deleteCertificate, editCertificate, getCertificate } from '../services/certificate';
+import { createCertificate, deleteCertificate, editCertificate } from '../services/certificate.service';
 
 const router = express.Router();
 

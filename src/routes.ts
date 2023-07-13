@@ -10,8 +10,8 @@ const certificate = require('./routes/certificate');
 import { tokenAuth } from './middleware/auth';
 
 // Services
-import { getCertificate, getCertificates } from './services/certificate';
-import { getTemplates } from './services/template';
+import { getCertificate, getCertificates } from './services/certificate.service';
+import { getTemplates } from './services/template.service';
 
 const router = express.Router();
 

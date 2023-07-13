@@ -4,7 +4,7 @@ import bcrypt from 'bcrypt';
 
 // Types
 import { Login, Register } from '../types/user-types';
-import { loginUser, registerUser } from '../services/user';
+import { loginUser, registerUser } from '../services/user.service';
 
 const router = express.Router();
 
